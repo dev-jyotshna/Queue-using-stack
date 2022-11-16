@@ -3,15 +3,15 @@
 using namespace std;
 
 const int Size =5;
-
+template <class t>
 class queuetype {
-    int q[Size];
-    int f,r;
+    t q[Size];
+    t f,r;
     public:
-        void addition(int);
-        int deletion();
-        int isfull();
-        int isempty();
+        void addition(t);
+        t deletion();
+        t isfull();
+        t isempty();
         void display();
 
         queuetype(){
@@ -19,8 +19,8 @@ class queuetype {
         }
 
 };
-
-void queuetype :: addition(int x){
+template <class t>
+void queuetype<t> :: addition(t x){
     if(f==-1)
     {
         f = r = 0;
@@ -31,7 +31,8 @@ void queuetype :: addition(int x){
         q[r] = x;
     }
 }
-int queuetype :: deletion(){
+template <class t>
+t queuetype<t> :: deletion(){
     int rem;
     if(f == r){
         rem = q[f];
@@ -43,20 +44,23 @@ int queuetype :: deletion(){
     }
     return rem;
 }
-int queuetype:: isempty()
+template <class t>
+t queuetype<t>:: isempty()
 {
 
     if(f == -1)
         return 1;
     else return -1;
 }
-int queuetype ::isfull(){
+template <class t>
+t queuetype<t> ::isfull(){
     if(r == Size-1)
         return 1;
     else return -1;
 }
-void queuetype :: display(){
-    int i;
+template <class t>
+void queuetype<t> :: display(){
+    t i;
     cout<<endl;
     for(i =0; i<f ; i++)//display deleted places
         cout<<"-\t";
@@ -70,7 +74,7 @@ void queuetype :: display(){
 int main()
 {
     int ch,e,x; char c = 'y';
-    queuetype q;
+    queuetype <int> q;
     cout << "\n\tARRAY IMPLEMENTATION OF QUEUE!" << endl;
     while(c == 'y' || c == 'Y')
     {
